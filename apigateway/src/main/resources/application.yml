@@ -1,0 +1,38 @@
+server:
+  port: 8080
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:3000/eureka/
+  instance:
+    preferIpAddress: true
+
+spring:
+  main:
+    web-application-type: reactive
+  security:
+    user:
+      name: "root"
+      password: "passecret"
+  application:
+    name: api-gateway
+  cloud:
+    config:
+      server:
+        git:
+          uri: "https://github.com/BalintPaulAndrei/Config_Server.git"
+    gateway:
+      routes:
+        - id: user
+          uri: http://localhost:8081
+          predicates:
+            - Path=/users/**
+        - id: appointment
+          uri: http://localhost:8082
+          predicates:
+            - Path=/appointments/**
+        - id: appointment
+          uri: http://localhost:8082
+          predicates:
+            - Path=/appointmentsummaries/**

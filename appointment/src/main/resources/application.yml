@@ -1,0 +1,17 @@
+server:
+  port: 8082
+
+spring:
+  config:
+    import: "optional:configserver:http://root:passecret@localhost:8080"
+  application:
+    name: appointment
+  profiles:
+    active: development
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:3000/eureka/
+  instance:
+    preferIpAddress: true

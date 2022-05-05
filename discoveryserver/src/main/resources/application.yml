@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: discovery-service
+
+server:
+  port: 3000
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
